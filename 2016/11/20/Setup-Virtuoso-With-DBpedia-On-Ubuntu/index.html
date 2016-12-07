@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="This blog introduces “How to setup virtuoso with dbpedia on ubuntu”.">
+<meta name="description" content="This blog introduces “How to setup virtuoso with dbpedia on ubuntu”.
+How to install virtuoso from sourcesThis section introduces “how to build virtuoso from sources”.
+Firstly, we need clone virtuoso s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Setup Virtuoso With DBpedia On Ubuntu">
 <meta property="og:url" content="http://yoursite.com/2016/11/20/Setup-Virtuoso-With-DBpedia-On-Ubuntu/index.html">
 <meta property="og:site_name" content="Heng Ding's Blog">
-<meta property="og:description" content="This blog introduces “How to setup virtuoso with dbpedia on ubuntu”.">
-<meta property="og:updated_time" content="2016-11-20T07:42:11.000Z">
+<meta property="og:description" content="This blog introduces “How to setup virtuoso with dbpedia on ubuntu”.
+How to install virtuoso from sourcesThis section introduces “how to build virtuoso from sources”.
+Firstly, we need clone virtuoso s">
+<meta property="og:updated_time" content="2016-12-07T12:03:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Setup Virtuoso With DBpedia On Ubuntu">
-<meta name="twitter:description" content="This blog introduces “How to setup virtuoso with dbpedia on ubuntu”.">
+<meta name="twitter:description" content="This blog introduces “How to setup virtuoso with dbpedia on ubuntu”.
+How to install virtuoso from sourcesThis section introduces “how to build virtuoso from sources”.
+Firstly, we need clone virtuoso s">
 
 
 
@@ -275,7 +281,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-20T15:37:01+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-20T15:37:01+01:00">
                 2016-11-20
               </time>
             
@@ -312,6 +318,99 @@
 
       
         <p>This blog introduces “How to setup virtuoso with dbpedia on ubuntu”.</p>
+<h2 id="How-to-install-virtuoso-from-sources"><a href="#How-to-install-virtuoso-from-sources" class="headerlink" title="How to install virtuoso from sources"></a>How to install virtuoso from sources</h2><p>This section introduces “how to build virtuoso from sources”.</p>
+<p>Firstly, we need clone virtuoso source from github.</p>
+<p><code>$ git clone https://github.com/openlink/virtuoso-opensource.git</code></p>
+<p>Secondly, we need to install and check all package dependencies {automake, autoconf, libtoolize, flex, bison, gperf, gawk, m4, make, openssl}</p>
+<p><code>$ sudo apt-get install automake</code></p>
+<p><code>$ automake --version</code></p>
+<p>Thridly, configure, make and install.</p>
+<p><code>$ cd virtuoso-opensource</code></p>
+<p><code>$ ./autogen.sh</code></p>
+<p><code>$ ./configure</code></p>
+<p><code>$ make</code></p>
+<p><code>$ make install</code></p>
+<p>By default, the install target directories are under <code>/usr/local/</code>. we changed the default target directories to <code>/usr/local/virtuoso-opensource</code> by using the follow command instead of <code>$ make install</code>.</p>
+<p><code>$ make install prefix=/usr/local/virtuoso-opensource</code></p>
+<p>After installation, these subdirectories are all appended to the target directories.</p>
+<ul>
+<li><code>share/virtuoso/doc/html</code><br>*<code>share/virtuoso/doc/pdf</code></li>
+<li><code>share/virtuoso/vad</code> - VAD packages BPEL, Conductor, tutorials, documentation</li>
+<li><code>var/lib/virtuoso/db</code> - Empty database</li>
+<li><code>var/lib/virtuoso/demo</code> - Demo database - obsolete as of version 5.0.3</li>
+<li><code>bin/</code> - The virtuoso-t, isql, isqlw, virt_mail, virtuoso-sample-t, inifile<br>  executables</li>
+<li><code>lib/</code> - libvirtuoso-t.a libvirtuoso-t.la virtodbc32.a virtodbc32.la<br>  virtodbc32 r.a virtodbc32_r.la virtodbc_r.so wikiv.so, plus any plugins<br>  that may be enabled.</li>
+<li><code>lib/virtuoso</code> - hosting sample.a hosting_sample.la hosting_sample.so<br>  plugin_sample.a plugin_sample.so</li>
+</ul>
+<p>By default, you can find <strong>database files</strong> in <code>/usr/local/virtuoso-opensource/var/lib/virtuoso/db</code>, and find <strong>executables</strong> in <code>/usr/local/virtuoso-opensource/bin</code>.</p>
+<h2 id="How-to-use-virtuoso-with-command-line"><a href="#How-to-use-virtuoso-with-command-line" class="headerlink" title="How to use virtuoso with command line"></a>How to use virtuoso with command line</h2><p>This section introduces the basic usage of command line of virtuoso, includes:</p>
+<h3 id="1-Start-virtuoso-from-command-line"><a href="#1-Start-virtuoso-from-command-line" class="headerlink" title="1. Start virtuoso from command line."></a>1. Start virtuoso from command line.</h3><p>Firstly, we should go into the database folder. </p>
+<p><code>$ cd /usr/local/virtuoso-opensource/var/lib/virtuoso/db</code></p>
+<p>Then, you can find a default configure file <code>virtuoso.ini</code> in the folder.</p>
+<p>Secondly, we can start with the command line.</p>
+<p><code>$ /usr/local/virtuoso-opensource/bin/virtuoso-t -f &amp;</code></p>
+<p>Then, we can access the web service by visit the follow url:</p>
+<p><code>http://localhost:8890/conductor/</code></p>
+<p>And the default account and password are both <code>dba</code>.</p>
+<h3 id="2-Insert-data-with-command-line"><a href="#2-Insert-data-with-command-line" class="headerlink" title="2. Insert data with command line."></a>2. Insert data with command line.</h3><p>Reference: </p>
+<ol>
+<li>[<a href="http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtRDFInsert" target="_blank" rel="external">http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtRDFInsert</a>]</li>
+</ol>
+<p>Start the command line tools</p>
+<p><code>$ cd /usr/local/virtuoso-opensource/var/lib/virtuoso/db</code></p>
+<p><code>$ /usr/local/virtuoso-opensource/bin/isql</code></p>
+<p><strong><em> virtuoso requires root. If you login with non-root account, you must change the owner of the folder <code>/usr/local/virtuoso-opensource/</code> by the follow command </em></strong></p>
+<p><code>$ sudo chmod -R 777 /usr/local/virtuoso-opensource/</code></p>
+<p><strong> 1. Load RDF/XML datasets into Virtuoso Graph IRI </strong></p>
+<p><code>SQL&gt; DB.DBA.RDF_LOAD_RDFXML_MT (file_to_string_output (&#39;/usr/local/virtuoso-opensource/var/lib/virtuoso/db/Kingsley_Idehen.rdf&#39;), &#39;&#39;, &#39;http://example.com&#39;);</code></p>
+<ul>
+<li>‘tmp/Kingsley_Idehen.rdf’ -&gt; RDF file path</li>
+<li>‘<a href="http://example.com" target="_blank" rel="external">http://example.com</a>‘ -&gt; IRI</li>
+</ul>
+<p><strong> 2. Load TTL/TURTLE/N3 (.ttl, .nq) datasets into Virtuoso Graph IRI </strong></p>
+<p><code>SQL&gt; DB.DBA.TTLP_MT (file_to_string_output (&#39;/usr/local/virtuoso-opensource/var/lib/virtuoso/db/users.ttl&#39;), &#39;&#39;, &#39;http://example.com&#39;);</code></p>
+<ul>
+<li>‘tmp/users.ttl’ -&gt; TTL file path</li>
+<li>‘<a href="http://example.com" target="_blank" rel="external">http://example.com</a>‘ -&gt; IRI</li>
+</ul>
+<p><strong><em> You should put the file into a path that virtuoso allowed to access, the simplest way is that puting the file in to <code>/usr/local/virtuoso-opensource/var/lib/virtuoso/db/</code></em></strong></p>
+<p><strong><em> The best way is to set <code>DirsAllowed</code> in virtuoso.ini. </em></strong> <code>DirsAllowed = /home/heng/dataset</code></p>
+<p><strong> 3. Bulk Loading RDF Source Files into Virtuoso Graph IRI </strong></p>
+<p>This is the best way to load exist knowledge bases (eg. dbpedia, freebase) into virtuoso.</p>
+<p>In this section, we will tell you <strong>how to set up dbpedia in virtuoso</strong>.</p>
+<p>Reference:</p>
+<ol>
+<li>[<a href="http://joernhees.de/blog/2014/04/23/setting-up-a-local-dbpedia-3-9-mirror-with-virtuoso-7/" target="_blank" rel="external">http://joernhees.de/blog/2014/04/23/setting-up-a-local-dbpedia-3-9-mirror-with-virtuoso-7/</a>]</li>
+<li>[<a href="http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtBulkRDFLoaderExampleDbpedia" target="_blank" rel="external">http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtBulkRDFLoaderExampleDbpedia</a>]</li>
+</ol>
+<p>Firstly, we need download dbpedia dataset. You can obtain it from <code>http://downloads.dbpedia.org/</code>. In this tutorial, we use dbpedia_3.9 and only download english sources. You can use the script to download all en data set files. (We only download <code>.nt</code> data set files)</p>
+<p><code>wget -r -nc -nH --cut-dirs=1 -np -l1 -A &#39;*.nt.bz2&#39; -A &#39;*.owl&#39; -R &#39;*unredirected*&#39; http://downloads.dbpedia.org/3.9/{en/,links/,dbpedia_3.9.owl}</code></p>
+<p>Assuming that we have downloaded dbpeda dataset to a local folder <code>/home/heng/dataset/depedia3.9/</code>. The dataset path must be added to <code>DirsAllowed</code> in virtuoso.ini. </p>
+<p>Thus, all <code>.bz2</code> files will be listed in path <code>/home/heng/dataset/depedia3.9/</code>.</p>
+<blockquote>
+<p>heng@byy06:~/dataset/dbpedia3.9$ ls <br><br>en  robots.txt <br></p>
+</blockquote>
+<p><strong> Note the compressed “.bz2” files need to be uncompressed as the bulk loader scripts of virtuoso only supports the auto extraction of “.gz” files. Thus we uncompressed “.bz2” files and compressed files with “.gz”. </strong> We can do it as follows:</p>
+<p><code>$ cd /home/heng/dataset/dbpedia3.9</code></p>
+<p><code>$ for d in */ ; do for i in &quot;${d%/}&quot;/*.bz2 ; do bzcat &quot;$i&quot; | gzip &gt; &quot;${i%.bz2}.gz&quot; &amp;&amp; rm &quot;$i&quot; ; done &amp; done</code></p>
+<p>Now, let us load dbpedia!</p>
+<p>(1) start isql;</p>
+<p><code>$ /usr/local/virtuoso-opensource/bin/isql</code></p>
+<blockquote>
+<p>heng@byy06:~$ /usr/local/virtuoso-opensource/bin/isql <br><br>OpenLink Interactive SQL (Virtuoso), version 0.9849b. <br><br>Type HELP; for help and EXIT; to exit. <br></p>
+</blockquote>
+<p>(2) register files;</p>
+<p><code>$ ld_dir_all(&#39;/home/heng/dataset/dbpedia3.9&#39;, &#39;*.*&#39;, &#39;http://dbpedia.org&#39;);</code></p>
+<p>(3) before run loader, you must change the <code>virtuoso.ini</code> as follows:</p>
+<blockquote>
+<p>[Database] <br><br>MaxCheckpointRemap       = 170000 # set this to 1/4th of NumberOfBuffers <br><br>[Parameters] <br><br>NumberOfBuffers          = 680000 <br> # My machine owns 16GB RAM<br>MaxDirtyBuffers          = 500000 <br><br>[SPARQL] <br><br>ShortenLongURIs = 1 <br></p>
+</blockquote>
+<p>(4) run loader and commit, it will cost several hours depends on your machine;</p>
+<p><code>$ rdf_loader_run();</code></p>
+<p><code>$ checkpoint;</code></p>
+<p><code>$ commit work;</code></p>
+<p><code>$ checkpoint;</code></p>
+<p><code>$ EXIT;</code></p>
 
       
     </div>
@@ -385,8 +484,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -432,6 +540,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-install-virtuoso-from-sources"><span class="nav-number">1.</span> <span class="nav-text">How to install virtuoso from sources</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-use-virtuoso-with-command-line"><span class="nav-number">2.</span> <span class="nav-text">How to use virtuoso with command line</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Start-virtuoso-from-command-line"><span class="nav-number">2.1.</span> <span class="nav-text">1. Start virtuoso from command line.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Insert-data-with-command-line"><span class="nav-number">2.2.</span> <span class="nav-text">2. Insert data with command line.</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
