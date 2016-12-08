@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="Heng Ding's Blog">
 <meta property="og:description" content="References:[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics">
 <meta property="og:image" content="http://yoursite.com/images/An-Brief-Summary-of-Question-Classification-Table-1.png">
-<meta property="og:updated_time" content="2016-12-08T09:18:57.000Z">
+<meta property="og:updated_time" content="2016-12-08T09:35:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Brief Summary of Question Classification">
 <meta name="twitter:description" content="References:[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics">
@@ -333,7 +333,24 @@
 <h2 id="3-ambiguity-of-question"><a href="#3-ambiguity-of-question" class="headerlink" title="3. ambiguity of question"></a>3. ambiguity of question</h2><p><code>1. What is bipolar disorder?</code> (Question 1 could belong to definition or disease medicine;)</p>
 <p><code>2. What do bats eat?</code> (Question 2 could belong to food, plant or animal;)</p>
 <p><code>3. What is the PH scale?</code> (Question 3 could be a nu- meric value or a definition.)</p>
-<h2 id="4-Classifier"><a href="#4-Classifier" class="headerlink" title="4. Classifier"></a>4. Classifier</h2><p><strong><em> SNoW learning architecture </em></strong></p>
+<h2 id="4-Classifier"><a href="#4-Classifier" class="headerlink" title="4. Classifier"></a>4. Classifier</h2><ul>
+<li>algorithm: <strong><em> SNoW (Sparse Network of Winnows) learning architecture </em></strong></li>
+<li>features<ul>
+<li>[<code>syntactic features</code>] words, pos tags, chunks (non-overlapping phrases) </li>
+<li>[<code>semantic features</code>] named entities, head chunks, semantically related words</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-Experiment"><a href="#5-Experiment" class="headerlink" title="5. Experiment"></a>5. Experiment</h2><ul>
+<li><p>Data: Data are collected from four sources: 4,500 English questions published by USC (Hovy et al., 2001), about 500 manually constructed questions for a few rare classes, 894 TREC 8 and TREC 9 questions, and also 500 questions from TREC 10 which serves as our test set. (totally 5500 questions for train and 500 for test)</p>
+</li>
+<li><p>evalution:</p>
+<ul>
+<li>P_1</li>
+<li>P_&lt;5</li>
+</ul>
+</li>
+</ul>
 <h1 id="Notes-of-2"><a href="#Notes-of-2" class="headerlink" title="Notes of [2]"></a>Notes of [2]</h1><h2 id="1-Contributions-1"><a href="#1-Contributions-1" class="headerlink" title="1. Contributions"></a>1. Contributions</h2><ul>
 <li>Proposed an additional question treebank for question parsing</li>
 <li>show the how quesiton parsing improve QA</li>
@@ -549,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-1"><span class="nav-number">2.</span> <span class="nav-text">Notes of [1]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions"><span class="nav-number">2.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology"><span class="nav-number">2.2.</span> <span class="nav-text">2. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ambiguity-of-question"><span class="nav-number">2.3.</span> <span class="nav-text">3. ambiguity of question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Classifier"><span class="nav-number">2.4.</span> <span class="nav-text">4. Classifier</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-2"><span class="nav-number">3.</span> <span class="nav-text">Notes of [2]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions-1"><span class="nav-number">3.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology-1"><span class="nav-number">3.2.</span> <span class="nav-text">2. question ontology</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-3"><span class="nav-number">4.</span> <span class="nav-text">Notes of [3]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-question-ontology"><span class="nav-number">4.1.</span> <span class="nav-text">1. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-evaluation-metrices"><span class="nav-number">4.2.</span> <span class="nav-text">2. evaluation metrices:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-baseline-bag-of-words-features"><span class="nav-number">4.3.</span> <span class="nav-text">3. baseline: bag of words features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-features"><span class="nav-number">4.4.</span> <span class="nav-text">4. features</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-1"><span class="nav-number">2.</span> <span class="nav-text">Notes of [1]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions"><span class="nav-number">2.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology"><span class="nav-number">2.2.</span> <span class="nav-text">2. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ambiguity-of-question"><span class="nav-number">2.3.</span> <span class="nav-text">3. ambiguity of question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Classifier"><span class="nav-number">2.4.</span> <span class="nav-text">4. Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Experiment"><span class="nav-number">2.5.</span> <span class="nav-text">5. Experiment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-2"><span class="nav-number">3.</span> <span class="nav-text">Notes of [2]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions-1"><span class="nav-number">3.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology-1"><span class="nav-number">3.2.</span> <span class="nav-text">2. question ontology</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-3"><span class="nav-number">4.</span> <span class="nav-text">Notes of [3]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-question-ontology"><span class="nav-number">4.1.</span> <span class="nav-text">1. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-evaluation-metrices"><span class="nav-number">4.2.</span> <span class="nav-text">2. evaluation metrices:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-baseline-bag-of-words-features"><span class="nav-number">4.3.</span> <span class="nav-text">3. baseline: bag of words features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-features"><span class="nav-number">4.4.</span> <span class="nav-text">4. features</span></a></li></ol></li></ol></div>
             
 
           </div>
