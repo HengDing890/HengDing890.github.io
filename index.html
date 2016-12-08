@@ -317,7 +317,7 @@
       
         
           
-            <h1 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h1><p>[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics, 2002. <code>(Cited by 608)</code><br>[2] Hermjakob, Ulf. “Parsing and question classification for question answering.” Proceedings of the workshop on Open-domain question answering-Volume 12. Association for Computational Linguistics, 2001. <code>(Cited by 180)</code><br>[3] Metzler, Donald, and W. Bruce Croft. “Analysis of statistical question classification for fact-based questions.” Information Retrieval 8.3 (2005): 481-504. <code>(Cited by 98)</code><br>[4] Zhang, Dell, and Wee Sun Lee. “Question classification using support vector machines.” Proceedings of the 26th annual international ACM SIGIR conference on Research and development in informaion retrieval. ACM, 2003. <code>(Cited by 496)</code></p>
+            <h1 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h1><p>[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics, 2002. <code>(Cited by 608)</code><br>[2] Hermjakob, Ulf. “Parsing and question classification for question answering.” Proceedings of the workshop on Open-domain question answering-Volume 12. Association for Computational Linguistics, 2001. <code>(Cited by 180)</code><br>[3] Metzler, Donald, and W. Bruce Croft. “Analysis of statistical question classification for fact-based questions.” Information Retrieval 8.3 (2005): 481-504. <code>(Cited by 98)</code><br>[4] Zhang, Dell, and Wee Sun Lee. “Question classification using support vector machines.” Proceedings of the 26th annual international ACM SIGIR conference on Research and development in informaion retrieval. ACM, 2003. <code>(Cited by 496)</code><br>[5] Ray, Santosh Kumar, Shailendra Singh, and Bhagwati P. Joshi. “A semantic approach for question classification using WordNet and Wikipedia.” Pattern Recognition Letters 31.13 (2010): 1935-1943. <code>(Cited by 31)</code></p>
 <h1 id="Notes-of-1"><a href="#Notes-of-1" class="headerlink" title="Notes of [1]"></a>Notes of [1]</h1><p>I think the paper is the most classical research about question classification. And it maybe is the first paper using machine learning approach to question classification.</p>
 <h2 id="1-Contributions"><a href="#1-Contributions" class="headerlink" title="1. Contributions"></a>1. Contributions</h2><ul>
 <li>proposed a machine learning approach to question classification.</li>
@@ -340,7 +340,7 @@
 <h2 id="4-Classifier"><a href="#4-Classifier" class="headerlink" title="4. Classifier"></a>4. Classifier</h2><ul>
 <li>algorithm: <strong><em> SNoW (Sparse Network of Winnows) learning architecture </em></strong></li>
 <li>features<ul>
-<li>[<code>syntactic features</code>] words, pos tags, chunks (non-overlapping phrases) </li>
+<li>[<code>syntactic features</code>] words, pos tags, chunks (non-overlapping phrases)</li>
 <li>[<code>semantic features</code>] named entities, head chunks, semantically related words</li>
 </ul>
 </li>
@@ -422,6 +422,45 @@
 <p>Every question is represented as binary feature vectors, because the term frequency (tf) of each word or ngram in a question usually is 0 or 1.</p>
 <h2 id="4-findings"><a href="#4-findings" class="headerlink" title="4. findings"></a>4. findings</h2><p><strong><em> SVM is better than other algorithms (Nearest Neighbors, Naive Beyes, Decision Tree, SNoW) </em></strong></p>
 <p><img src="/images/An-Brief-Summary-of-Question-Classification-Table-2.png" alt=""></p>
+<h1 id="Notes-of-5"><a href="#Notes-of-5" class="headerlink" title="Notes of [5]"></a>Notes of [5]</h1><h2 id="1-Contributions-2"><a href="#1-Contributions-2" class="headerlink" title="1. Contributions"></a>1. Contributions</h2><ul>
+<li>using online collaborative resources such as Wikipedia (Wikipedia) for question classification</li>
+</ul>
+<h2 id="2-Useful-information-from-related-work"><a href="#2-Useful-information-from-related-work" class="headerlink" title="2. Useful information from related work"></a>2. Useful information from related work</h2><ul>
+<li>Methods of question classification<ul>
+<li>meachine learning</li>
+<li>language model</li>
+<li>use semantic resources (wordnet)</li>
+<li>use online collaborative resources (Wikipedia)</li>
+<li>other:<ul>
+<li>subtree mining method[improve syntactic and semantic parsing]</li>
+<li>use retrieval result from goolge for question classification</li>
+<li>use statistical information from unlabeled corpus for extract features for question classification</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-question-ontology-and-dataset"><a href="#3-question-ontology-and-dataset" class="headerlink" title="3. question ontology and dataset"></a>3. question ontology and dataset</h2><ul>
+<li>UIUC datasets<ul>
+<li>two-layered taxonomy, 6 coarse classes and 50 fine classes</li>
+<li>5500 training (questions are from TREC 8&amp;9) and 500 test questions (Trec 10)</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-question-patterns"><a href="#4-question-patterns" class="headerlink" title="4. question patterns"></a>4. question patterns</h2><ul>
+<li>7 standard X-Wh questions<ul>
+<li>Functional Word Questions (All Non-Wh questions (except how) fall under the category of Functional Word Questions.)</li>
+<li>When Questions</li>
+<li>Where Questions</li>
+<li>Which Questions</li>
+<li>Who/Whose/Whom Questions</li>
+<li>Why Questions</li>
+<li>How Questions</li>
+<li>What</li>
+</ul>
+</li>
+<li>other questions</li>
+</ul>
 
           
         
