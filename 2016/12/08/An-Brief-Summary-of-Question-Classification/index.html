@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/12/08/An-Brief-Summary-of-Question-Classification/index.html">
 <meta property="og:site_name" content="Heng Ding's Blog">
 <meta property="og:description" content="References:[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics">
-<meta property="og:updated_time" content="2016-12-08T08:10:56.000Z">
+<meta property="og:updated_time" content="2016-12-08T08:13:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Brief Summary of Question Classification">
 <meta name="twitter:description" content="References:[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics">
@@ -311,8 +311,26 @@
       
 
       
-        <p>References:<br>[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics, 2002.<br>[2] Hermjakob, Ulf. “Parsing and question classification for question answering.” Proceedings of the workshop on Open-domain question answering-Volume 12. Association for Computational Linguistics, 2001.<br>[3] Metzler, Donald, and W. Bruce Croft. “Analysis of statistical question classification for fact-based questions.” Information Retrieval 8.3 (2005): 481-504.</p>
-
+        <h1 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h1><p>[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics, 2002.<br>[2] Hermjakob, Ulf. “Parsing and question classification for question answering.” Proceedings of the workshop on Open-domain question answering-Volume 12. Association for Computational Linguistics, 2001.<br>[3] Metzler, Donald, and W. Bruce Croft. “Analysis of statistical question classification for fact-based questions.” Information Retrieval 8.3 (2005): 481-504.</p>
+<h1 id="Analysis-of-statistical-question-classification-for-fact-based-questions"><a href="#Analysis-of-statistical-question-classification-for-fact-based-questions" class="headerlink" title="Analysis of statistical question classification for fact-based questions."></a>Analysis of statistical question classification for fact-based questions.</h1><p>question ontology:</p>
+<pre><code>- Trec QA questions: 31 answer types, BBN&apos;s question ontology
+- UIUC (a superset of the TREC QA track questions and impose a different question ontology on the data.): a hierarchical question ontology. 6 coarse grained classes and 50 fine grained classes.
+- MadSci (consists of science related fact-based questions): an augmented version of the TREC QA ontology.
+</code></pre><p>evaluation:</p>
+<pre><code>- metrics: precision, P≤n, mean reciprocal rank.
+</code></pre><p>baseline: bag of words features</p>
+<pre><code>- Trec QA questions, 77.59% (precision) and 0.8437 (MRR)
+- UIUC, 86.20% (Coarse precision), 81.00% (fine precision), 0.9224 (Coarse MRR), 0.862 (fine MRR)
+- MadSci, 72.60% (precision) and 0.8124 (MRR)
+</code></pre><p>features:</p>
+<pre><code>- Syntactic features: (questions of the same type often have the same syntactic style)
+    * unigram and bigram features
+    * POS tags
+    * question word (what, who, where ...), not use in the paper
+    * presence of a proper noun phrase
+- Semantic features:
+    * using wordnet to extract semantic information (WordNet hypernyms) about the headword of the main noun phrase
+</code></pre>
       
     </div>
 
@@ -403,8 +421,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -450,6 +477,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Analysis-of-statistical-question-classification-for-fact-based-questions"><span class="nav-number">2.</span> <span class="nav-text">Analysis of statistical question classification for fact-based questions.</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
