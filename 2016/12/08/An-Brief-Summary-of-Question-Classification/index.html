@@ -91,7 +91,8 @@
 <meta property="og:site_name" content="Heng Ding's Blog">
 <meta property="og:description" content="References:[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics">
 <meta property="og:image" content="http://yoursite.com/images/An-Brief-Summary-of-Question-Classification-Table-1.png">
-<meta property="og:updated_time" content="2016-12-08T09:35:37.000Z">
+<meta property="og:image" content="http://yoursite.com/images/An-Brief-Summary-of-Question-Classification-Table-2.png">
+<meta property="og:updated_time" content="2016-12-08T10:22:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Brief Summary of Question Classification">
 <meta name="twitter:description" content="References:[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics">
@@ -313,7 +314,7 @@
       
 
       
-        <h1 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h1><p>[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics, 2002. <code>(Cited by 608)</code><br>[2] Hermjakob, Ulf. “Parsing and question classification for question answering.” Proceedings of the workshop on Open-domain question answering-Volume 12. Association for Computational Linguistics, 2001. <code>(Cited by 180)</code><br>[3] Metzler, Donald, and W. Bruce Croft. “Analysis of statistical question classification for fact-based questions.” Information Retrieval 8.3 (2005): 481-504. <code>(Cited by 98)</code></p>
+        <h1 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h1><p>[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics, 2002. <code>(Cited by 608)</code><br>[2] Hermjakob, Ulf. “Parsing and question classification for question answering.” Proceedings of the workshop on Open-domain question answering-Volume 12. Association for Computational Linguistics, 2001. <code>(Cited by 180)</code><br>[3] Metzler, Donald, and W. Bruce Croft. “Analysis of statistical question classification for fact-based questions.” Information Retrieval 8.3 (2005): 481-504. <code>(Cited by 98)</code><br>[4] Zhang, Dell, and Wee Sun Lee. “Question classification using support vector machines.” Proceedings of the 26th annual international ACM SIGIR conference on Research and development in informaion retrieval. ACM, 2003. <code>(Cited by 496)</code></p>
 <h1 id="Notes-of-1"><a href="#Notes-of-1" class="headerlink" title="Notes of [1]"></a>Notes of [1]</h1><p>I think the paper is the most classical research about question classification. And it maybe is the first paper using machine learning approach to question classification.</p>
 <h2 id="1-Contributions"><a href="#1-Contributions" class="headerlink" title="1. Contributions"></a>1. Contributions</h2><ul>
 <li>proposed a machine learning approach to question classification.</li>
@@ -409,6 +410,27 @@
 </ul>
 </li>
 </ul>
+<h1 id="Notes-of-4"><a href="#Notes-of-4" class="headerlink" title="Notes of [4]"></a>Notes of [4]</h1><ol>
+<li><p>question ontology (same as [1])</p>
+</li>
+<li><p>datasets</p>
+</li>
+</ol>
+<ul>
+<li>USC</li>
+<li>UIUC</li>
+<li>TREC QA</li>
+</ul>
+<ol>
+<li>features</li>
+</ol>
+<p>bag-of-words and bag-of-ngrams (all continuous word sequences in the question).</p>
+<p>Every question is represented as binary feature vectors, because the term frequency (tf) of each word or ngram in a question usually is 0 or 1.</p>
+<ol>
+<li>findings</li>
+</ol>
+<p><strong><em> SVM is better than other algorithms (Nearest Neighbors, Naive Beyes, Decision Tree, SNoW) </em></strong></p>
+<p><img src="/images/An-Brief-Summary-of-Question-Classification-Table-2.png" alt=""></p>
 
       
     </div>
@@ -566,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-1"><span class="nav-number">2.</span> <span class="nav-text">Notes of [1]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions"><span class="nav-number">2.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology"><span class="nav-number">2.2.</span> <span class="nav-text">2. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ambiguity-of-question"><span class="nav-number">2.3.</span> <span class="nav-text">3. ambiguity of question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Classifier"><span class="nav-number">2.4.</span> <span class="nav-text">4. Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Experiment"><span class="nav-number">2.5.</span> <span class="nav-text">5. Experiment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-2"><span class="nav-number">3.</span> <span class="nav-text">Notes of [2]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions-1"><span class="nav-number">3.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology-1"><span class="nav-number">3.2.</span> <span class="nav-text">2. question ontology</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-3"><span class="nav-number">4.</span> <span class="nav-text">Notes of [3]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-question-ontology"><span class="nav-number">4.1.</span> <span class="nav-text">1. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-evaluation-metrices"><span class="nav-number">4.2.</span> <span class="nav-text">2. evaluation metrices:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-baseline-bag-of-words-features"><span class="nav-number">4.3.</span> <span class="nav-text">3. baseline: bag of words features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-features"><span class="nav-number">4.4.</span> <span class="nav-text">4. features</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-1"><span class="nav-number">2.</span> <span class="nav-text">Notes of [1]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions"><span class="nav-number">2.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology"><span class="nav-number">2.2.</span> <span class="nav-text">2. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-ambiguity-of-question"><span class="nav-number">2.3.</span> <span class="nav-text">3. ambiguity of question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Classifier"><span class="nav-number">2.4.</span> <span class="nav-text">4. Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Experiment"><span class="nav-number">2.5.</span> <span class="nav-text">5. Experiment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-2"><span class="nav-number">3.</span> <span class="nav-text">Notes of [2]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions-1"><span class="nav-number">3.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology-1"><span class="nav-number">3.2.</span> <span class="nav-text">2. question ontology</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-3"><span class="nav-number">4.</span> <span class="nav-text">Notes of [3]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-question-ontology"><span class="nav-number">4.1.</span> <span class="nav-text">1. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-evaluation-metrices"><span class="nav-number">4.2.</span> <span class="nav-text">2. evaluation metrices:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-baseline-bag-of-words-features"><span class="nav-number">4.3.</span> <span class="nav-text">3. baseline: bag of words features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-features"><span class="nav-number">4.4.</span> <span class="nav-text">4. features</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-4"><span class="nav-number">5.</span> <span class="nav-text">Notes of [4]</span></a></li></ol></div>
             
 
           </div>
