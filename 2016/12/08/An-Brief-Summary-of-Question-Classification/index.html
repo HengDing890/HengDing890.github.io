@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/12/08/An-Brief-Summary-of-Question-Classification/index.html">
 <meta property="og:site_name" content="Heng Ding's Blog">
 <meta property="og:description" content="References:[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics">
-<meta property="og:updated_time" content="2016-12-08T08:17:53.000Z">
+<meta property="og:updated_time" content="2016-12-08T08:35:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="An Brief Summary of Question Classification">
 <meta name="twitter:description" content="References:[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics">
@@ -312,12 +312,47 @@
 
       
         <h1 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h1><p>[1] Li, Xin, and Dan Roth. “Learning question classifiers.” Proceedings of the 19th international conference on Computational linguistics-Volume 1. Association for Computational Linguistics, 2002.<br>[2] Hermjakob, Ulf. “Parsing and question classification for question answering.” Proceedings of the workshop on Open-domain question answering-Volume 12. Association for Computational Linguistics, 2001.<br>[3] Metzler, Donald, and W. Bruce Croft. “Analysis of statistical question classification for fact-based questions.” Information Retrieval 8.3 (2005): 481-504.</p>
+<h1 id="Notes-of-2"><a href="#Notes-of-2" class="headerlink" title="Notes of [2]"></a>Notes of [2]</h1><h2 id="1-Contributions"><a href="#1-Contributions" class="headerlink" title="1. Contributions"></a>1. Contributions</h2><ul>
+<li>Proposed an additional question treebank for question parsing </li>
+<li>show the how quesiton parsing improve QA</li>
+</ul>
+<p><strong><em> motivation: <code>penn treebank trained on newspaper corpus is not suitable for &quot;question sentence</code> </em></strong></p>
+<h2 id="2-question-ontology"><a href="#2-question-ontology" class="headerlink" title="2. question ontology"></a>2. question ontology</h2><ul>
+<li>Based on the follow paper, there are 122 categories (termed <code>Qtargets</code> in the paper) in their question ontology (question and answer types).<ul>
+<li>Abstract Qtarget<ul>
+<li>why-famous (What is Switzerland known for?)</li>
+<li>abbreviation （How do you abbreviate limited partnership?）</li>
+<li>definition (What is NAFTA)</li>
+<li>contrast (What’s the difference between DARPA and NSF?)</li>
+<li>……</li>
+</ul>
+</li>
+<li>Quantity<ul>
+<li>energy-quantity</li>
+<li>spatial-quantity</li>
+<li>temporal-quantity</li>
+<li>speed-quantity</li>
+<li>numerical-quantity</li>
+<li>……</li>
+</ul>
+</li>
+<li>Qtargets referring to semantic role (Why can’t ostriches fly?)</li>
+<li>Qtartgets referring to marked-up constituents (Name a film in which Jude Law acted)</li>
+</ul>
+</li>
+</ul>
+<p><strong><em> queries: all their queries are from TREC 8&amp;9 (QA task) </em></strong></p>
 <h1 id="Notes-of-3"><a href="#Notes-of-3" class="headerlink" title="Notes of [3]"></a>Notes of [3]</h1><h2 id="1-question-ontology"><a href="#1-question-ontology" class="headerlink" title="1. question ontology"></a>1. question ontology</h2><ul>
 <li>Trec QA questions: 31 answer types, BBN’s question ontology</li>
 <li>UIUC (a superset of the TREC QA track questions and impose a different question ontology on the data.): a hierarchical question ontology. 6 coarse grained classes and 50 fine grained classes.</li>
 <li>MadSci (consists of science related fact-based questions): an augmented version of the TREC QA ontology.</li>
 </ul>
-<h2 id="2-evaluation-metrices-precision-P≤n-mean-reciprocal-rank"><a href="#2-evaluation-metrices-precision-P≤n-mean-reciprocal-rank" class="headerlink" title="2. evaluation metrices: precision, P≤n, mean reciprocal rank."></a>2. evaluation metrices: precision, P≤n, mean reciprocal rank.</h2><h2 id="3-baseline-bag-of-words-features"><a href="#3-baseline-bag-of-words-features" class="headerlink" title="3. baseline: bag of words features"></a>3. baseline: bag of words features</h2><ul>
+<h2 id="2-evaluation-metrices"><a href="#2-evaluation-metrices" class="headerlink" title="2. evaluation metrices:"></a>2. evaluation metrices:</h2><ul>
+<li>precision</li>
+<li>P≤n</li>
+<li>mean reciprocal rank.</li>
+</ul>
+<h2 id="3-baseline-bag-of-words-features"><a href="#3-baseline-bag-of-words-features" class="headerlink" title="3. baseline: bag of words features"></a>3. baseline: bag of words features</h2><ul>
 <li>Trec QA questions, 77.59% (precision) and 0.8437 (MRR)</li>
 <li>UIUC, 86.20% (Coarse precision), 81.00% (fine precision), 0.9224 (Coarse MRR), 0.862 (fine MRR)</li>
 <li>MadSci, 72.60% (precision) and 0.8124 (MRR)</li>
@@ -492,7 +527,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-3"><span class="nav-number">2.</span> <span class="nav-text">Notes of [3]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-question-ontology"><span class="nav-number">2.1.</span> <span class="nav-text">1. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-evaluation-metrices-precision-P≤n-mean-reciprocal-rank"><span class="nav-number">2.2.</span> <span class="nav-text">2. evaluation metrices: precision, P≤n, mean reciprocal rank.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-baseline-bag-of-words-features"><span class="nav-number">2.3.</span> <span class="nav-text">3. baseline: bag of words features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-features"><span class="nav-number">2.4.</span> <span class="nav-text">4. features</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-2"><span class="nav-number">2.</span> <span class="nav-text">Notes of [2]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Contributions"><span class="nav-number">2.1.</span> <span class="nav-text">1. Contributions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-question-ontology"><span class="nav-number">2.2.</span> <span class="nav-text">2. question ontology</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notes-of-3"><span class="nav-number">3.</span> <span class="nav-text">Notes of [3]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-question-ontology"><span class="nav-number">3.1.</span> <span class="nav-text">1. question ontology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-evaluation-metrices"><span class="nav-number">3.2.</span> <span class="nav-text">2. evaluation metrices:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-baseline-bag-of-words-features"><span class="nav-number">3.3.</span> <span class="nav-text">3. baseline: bag of words features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-features"><span class="nav-number">3.4.</span> <span class="nav-text">4. features</span></a></li></ol></li></ol></div>
             
 
           </div>
