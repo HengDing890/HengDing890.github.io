@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Heng Ding,hengding@whu.edu.cn"><title>Virtuoso+Depedia+Ubuntu部署 · Heng Ding (丁恒)</title><meta name="description" content="最近K老板经过深思熟虑(嗯, 也就是拍一拍屁股的功夫, -_-!!)，准备在”基于知识库的问答” (knowledage-based question answering)上搞一搞事情，于是乎安排科研民工H（嗯，你没猜错，就是是我…）研究下如何使用Virtuoso进行RDF存储和SPARQL结构化查"><meta name="keywords" content="Information Retrieval, Data Mining, Deep Learning"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">Heng Ding (丁恒)</a></h3><div class="description"><p>科研狗 &amp; 攻城狮 | IR (信息检索) -&gt; AI (人工智能)</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/120"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/HengDing890"><i class="fa fa-github"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Virtuoso+Depedia+Ubuntu部署</a></h3></div><div class="post-content"><p>最近K老板经过深思熟虑(嗯, 也就是拍一拍屁股的功夫, -_-!!)，准备在”基于知识库的问答” (knowledage-based question answering)上搞一搞事情，于是乎安排科研民工H（嗯，你没猜错，就是是我…）研究下如何使用Virtuoso进行RDF存储和SPARQL结构化查询.</p>
+<p>Virtuoso是一个高性能的企业级对象关系SQL数据库(object-relational SQL database)，其支持RDF/XML/TTL/TURTLE/N3(.ttl, .nq) 等结构化数据的存储和SPARQL查询，<a href="http://vos.openlinksw.com/owiki/wiki/VOS/" target="_blank" rel="external">详情请见</a>.</p>
+<p>DBpedia是一个非常著名的、基于维基百科(Wikipedia)的知识库。(我们将用其进行数据存储和查询测试)</p>
+<p>*注意本文所述方法仅在ubuntu 14.04系统环境下进行了部署与测试.</p>
+<h3 id="Virtuoso-安装"><a href="#Virtuoso-安装" class="headerlink" title="Virtuoso 安装"></a>Virtuoso 安装</h3><p>第一步，从github上下载Virtuoso源代码.</p>
+<p><code>git clone https://github.com/openlink/virtuoso-opensource.git</code></p>
+<p>第二步，安装相关依赖包.</p>
+<p><code>sudo apt-get install automake, autoconf, libtoolize, flex, bison, gperf, gawk, m4, make, openssl</code></p>
+<p>第三部，编译并安装Virtuoso.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> virtuoso-opensource</div><div class="line">./autogen.sh</div><div class="line">./configure</div><div class="line">make</div><div class="line">make install prefix=/usr/<span class="built_in">local</span>/virtuoso-opensource</div></pre></td></tr></table></figure>
+<div class="tip"><br>如果不输入prefix参数, 则Virtuoso被安装到默认路径<code>/usr/local/</code>.<br></div>
+
+<p>安装完成后，Virtuoso安装路径下会出现如下目录:</p>
+<ul>
+<li>share/virtuoso/doc/html</li>
+<li>share/virtuoso/doc/pdf</li>
+<li>share/virtuoso/vad - VAD packages BPEL, Conductor, tutorials, documentation</li>
+<li>var/lib/virtuoso/db - Empty database</li>
+<li>var/lib/virtuoso/demo - Demo database - obsolete as of version 5.0.3</li>
+<li>bin/ - The virtuoso-t, isql, isqlw, virt_mail, virtuoso-sample-t, inifile<br>  executables</li>
+<li>lib/ - libvirtuoso-t.a libvirtuoso-t.la virtodbc32.a virtodbc32.la<br>  virtodbc32 r.a virtodbc32_r.la virtodbc_r.so wikiv.so, plus any plugins<br>  that may be enabled.</li>
+<li>lib/virtuoso - hosting sample.a hosting_sample.la hosting_sample.so<br>  plugin_sample.a plugin_sample.so</li>
+</ul>
+<p>其中<strong>数据库文件</strong>在<code>/usr/local/virtuoso-opensource/var/lib/virtuoso/db</code>中，而<strong>可执行程序</strong>在<code>/usr/local/virtuoso-opensource/bin</code>下.</p>
+<h3 id="Virtuoso-使用"><a href="#Virtuoso-使用" class="headerlink" title="Virtuoso 使用"></a>Virtuoso 使用</h3><h4 id="1-启动-Virtuoso-服务"><a href="#1-启动-Virtuoso-服务" class="headerlink" title="1. 启动 Virtuoso 服务"></a>1. 启动 Virtuoso 服务</h4><p>进入Virtuoso数据库文件目录， <code>$ cd /usr/local/virtuoso-opensource/var/lib/virtuoso/db</code>.</p>
+<div class="tip"><br>注意数据库文件目录下应该存在一个默认配置文件<code>virtuoso.ini</code>.<br></div>
+
+<p>以后台方式运行Virtuoso服务， <code>$ /usr/local/virtuoso-opensource/bin/virtuoso-t -f &amp;</code>.</p>
+<p>此时，可通过浏览器访问Virtuoso，<code>http://localhost:8890/conductor/</code>.</p>
+<div class="tip"><br>默认用户名和密码均为 “dba”.<br></div>
+
+<h3 id="2-数据存储"><a href="#2-数据存储" class="headerlink" title="2. 数据存储"></a>2. 数据存储</h3><p>命令行启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/virtuoso-opensource/var/lib/virtuoso/db</div><div class="line">/usr/<span class="built_in">local</span>/virtuoso-opensource/bin/isql</div></pre></td></tr></table></figure>
+<p>Virtuoso需要root权限，如果你使用非root用户登录，则需要更改<code>/usr/local/virtuoso-opensource/</code>的读写权限.</p>
+<p><code>sudo chmod -R 777 /usr/local/virtuoso-opensource/</code></p>
+<p><strong> 1. 加载 RDF/XML 数据 </strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SQL&gt; DB.DBA.RDF_LOAD_RDFXML_MT (file_to_string_output ('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/Kingsley_Idehen.rdf'), '', 'http://example.com');</div></pre></td></tr></table></figure>
+<ul>
+<li>‘tmp/Kingsley_Idehen.rdf’ -&gt; RDF file path</li>
+<li>‘<a href="http://example.com" target="_blank" rel="external">http://example.com</a>‘ -&gt; IRI</li>
+</ul>
+<p><strong> 2. 加载 TTL/TURTLE/N3 (.ttl, .nq) 数据 </strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SQL&gt; DB.DBA.TTLP_MT (file_to_string_output ('/usr/local/virtuoso-opensource/var/lib/virtuoso/db/users.ttl'), '', 'http://example.com');</div></pre></td></tr></table></figure>
+<ul>
+<li>‘tmp/users.ttl’ -&gt; TTL file path</li>
+<li>‘<a href="http://example.com" target="_blank" rel="external">http://example.com</a>‘ -&gt; IRI</li>
+</ul>
+<div class="tip"><br>注意数据文件必须放置在virtuoso能够访问的有效路径下.<br><br>简单方法: 将所有数据文件放入<code>/usr/local/virtuoso-opensource/var/lib/virtuoso/db/</code>目录下.<br><br>最佳方法: 在virtuoso.ini配置文件中设置属性<code>DirsAllowed = /path/to/dataset</code>.<br></div>
+
+<p><strong> 3. 批量加载 RDF 原文件 </strong></p>
+<p>批量加载是加载大规模知识库(e.g., DBpedia, Freebase, etc.)的最优方法.</p>
+<p>本文以DBpedia数据为例，说明如何使用<code>/usr/local/virtuoso-opensource/bin/isql</code>命令行工具，执行批量数据加载。</p>
+<ul>
+<li>下载DBpedia原数据，这里我们只下载<code>.nt</code>格式的数据，此时原数据皆为<code>.bz2</code>压缩文件.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -r -nc -nH --cut-dirs=1 -np <span class="_">-l</span>1 -A <span class="string">'*.nt.bz2'</span> -A <span class="string">'*.owl'</span> -R <span class="string">'*unredirected*'</span> http://downloads.dbpedia.org/3.9/&#123;en/,links/,dbpedia_3.9.owl&#125;</div></pre></td></tr></table></figure>
+<p>假设DBpedia原数据被下载到路径<code>/path/to/dataset/depedia3.9/</code>. 将该路径加入virtuoso.ini配置文件<code>DirsAllowed = /path/to/dataset/depedia3.9/</code>.</p>
+<ul>
+<li><code>.bz2</code>文件 to <code>.gz</code>文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /path/to/dataset/depedia3.9/</div><div class="line"><span class="keyword">for</span> d <span class="keyword">in</span> */ ; <span class="keyword">do</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">"<span class="variable">$&#123;d%/&#125;</span>"</span>/*.bz2 ; <span class="keyword">do</span> bzcat <span class="string">"<span class="variable">$i</span>"</span> | gzip &gt; <span class="string">"<span class="variable">$&#123;i%.bz2&#125;</span>.gz"</span> &amp;&amp; rm <span class="string">"<span class="variable">$i</span>"</span> ; <span class="keyword">done</span> &amp; <span class="keyword">done</span></div></pre></td></tr></table></figure>
+<div class="tip"><br>Virtuoso批量加载只支持<code>.gz</code>压缩文件，因此需要将<code>.bz2</code>压缩文件转换为<code>.gz</code>压缩文件.<br></div>
+
+<ul>
+<li>加载DBpedia</li>
+</ul>
+<p>启动isql命令行工具;</p>
+<p><code>$ /usr/local/virtuoso-opensource/bin/isql</code></p>
+<p>注册数据文件;</p>
+<p><code>$ ld_dir_all(&#39;/path/to/dataset/depedia3.9/&#39;, &#39;*.*&#39;, &#39;http://dbpedia.org&#39;);</code></p>
+<p>修改<code>virtuoso.ini</code>配置文件;</p>
+<blockquote>
+<p>[Database]<br>MaxCheckpointRemap       = 170000 # set this to 1/4th of NumberOfBuffers<br>[Parameters]<br>NumberOfBuffers          = 680000 # My machine owns 16GB RAM<br>MaxDirtyBuffers          = 500000<br>[SPARQL]<br>ShortenLongURIs = 1</p>
+</blockquote>
+<p>执行加载(该步骤可能花费数小时，请耐心等待)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">rdf_loader_run();</div><div class="line">checkpoint;</div><div class="line">commit work;</div><div class="line">checkpoint;</div><div class="line">EXIT;</div></pre></td></tr></table></figure>
+<div class="tip"><br>参考:<br><a href="http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtRDFInsert" target="_blank" rel="external">http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtRDFInsert</a><br><a href="http://joernhees.de/blog/2014/04/23/setting-up-a-local-dbpedia-3-9-mirror-with-virtuoso-7/" target="_blank" rel="external">http://joernhees.de/blog/2014/04/23/setting-up-a-local-dbpedia-3-9-mirror-with-virtuoso-7/</a><br><a href="http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtBulkRDFLoaderExampleDbpedia" target="_blank" rel="external">http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/VirtBulkRDFLoaderExampleDbpedia</a><br></div>
+
+
+
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2016-11-20</span><i class="fa fa-tag"></i><a href="/tags/Virtuoso/" title="Virtuoso" class="tag">Virtuoso </a><a href="/tags/Triple-Database/" title="Triple Database" class="tag">Triple Database </a><a href="/tags/RDF-Database/" title="RDF Database" class="tag">RDF Database </a><a href="/tags/Semantic-Web/" title="Semantic Web" class="tag">Semantic Web </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://yoursite.com/2016/11/20/Virtuoso-Depedia-Ubuntu部署/,Heng Ding (丁恒),Virtuoso+Depedia+Ubuntu部署,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
