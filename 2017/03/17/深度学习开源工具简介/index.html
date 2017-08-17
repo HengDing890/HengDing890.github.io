@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Heng Ding, hengding@whu.edu.cn"><title>深度学习开源工具简介 · Heng Ding (丁恒)</title><meta name="description" content="Kr终于决定从IR向AI转型啦，于是乎大家兴冲冲的开始了DL课程学习. 理论自不必说，大家阅读英文论文的能力还是很不错的.
+但是，该选用哪个lib作为小组深度学习模型Coding实现呢？
+本汪作为一个玩过Caffe/Theano/Keras/Mxnet的能力者，这时候必须跳出来发表一下意见啦. 哈哈"><meta name="keywords" content="Information Retrieval, Data Mining, Deep Learning"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;border-radius:20px;"><h3 title=""><a href="/">Heng Ding (丁恒)</a></h3><div class="description"><p>科研狗 &amp; 攻城狮 | IR (信息检索) -&gt; AI (人工智能)</p></div></div></div><ul class="social-links"><li><a href="http://weibo.com/5630667316"><i class="fa fa-weibo"></i></a></li><li><a href="http://github.com/HengDing890"><i class="fa fa-github"></i></a></li></ul><div class="footer"></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">博文</a></li><li><a href="/archives">归档</a></li><li><a href="/project">项目</a></li><li><a href="/publication">论文</a></li><li><a href="/about">关于</a></li><li><a href="https://pan.baidu.com/s/1skOsE65">CV</a></li></div><div class="information"><div class="back_btn"><li><a onclick="window.history.go(-1)" class="fa fa-chevron-left"> </a></li></div><div class="avatar"><img src="/images/favicon.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>深度学习开源工具简介</a></h3></div><div class="post-content"><p>Kr终于决定从IR向AI转型啦，于是乎大家兴冲冲的开始了DL课程学习. 理论自不必说，大家阅读英文论文的能力还是很不错的.</p>
+<p>但是，该选用哪个lib作为小组深度学习模型Coding实现呢？</p>
+<p>本汪作为一个玩过Caffe/Theano/Keras/Mxnet的能力者，这时候必须跳出来发表一下意见啦. 哈哈.</p>
+<p>为了使得我的发言”李菊福”，于是乎自然要来一个对比统计啦.</p>
+<h3 id="流行DL开源工具列表"><a href="#流行DL开源工具列表" class="headerlink" title="流行DL开源工具列表"></a>流行DL开源工具列表</h3><ul>
+<li><a href="http://caffe.berkeleyvision.org/" target="_blank" rel="external">caffe</a>，大神Yangqing Jia在Berkeley时的作品. 多用于CV领域(Top Conferences论文里70%都是它啦)，NLP比较难用.</li>
+<li><a href="http://torch.ch/" target="_blank" rel="external">torch</a>，作者Ronan Collbert，来自IDIAP. Facebook AI好像常用这个玩意，NYU的工作也大量使用它.</li>
+<li><a href="http://deeplearning.net/software/theano/" target="_blank" rel="external">theano</a>，DL权威Y. Bengio组的作品. 老牌工具包，貌似因为是一群PhD维护开发的，导致大家似乎都对它有点不那么放心.</li>
+<li><a href="https://www.tensorflow.org/" target="_blank" rel="external">tensorflow</a>，google出品必数精品. 好吧，因为Google的名声，所以流行也是必然的.</li>
+<li><a href="http://mxnet.io/" target="_blank" rel="external">mxnet</a>，一群大神的作品，主力缔造者是Kaggle传奇陈天奇(Xgboost的作者)，值得相信.</li>
+<li><a href="https://github.com/Microsoft/CNTK" target="_blank" rel="external">cntk</a>，微软作品，不知道有没有人会用，唯一优势可能是WINDOWS支持上比较好吧.</li>
+<li><a href="http://www.paddlepaddle.org/" target="_blank" rel="external">Paddle</a>，百度作品. 看到百度就不想用它了，哈哈. 百度的技术是很先进啦，可惜百度的产品设计从来都不那么友好，所以这玩意玩起来<strong>可能</strong>也不是那么容易上手.</li>
+</ul>
+<h3 id="性能对比"><a href="#性能对比" class="headerlink" title="性能对比"></a>性能对比</h3><table>
+<thead>
+<tr>
+<th>工具包</th>
+<th style="text-align:center">开发语言</th>
+<th style="text-align:center">语言接口</th>
+<th style="text-align:center">支持设备</th>
+<th style="text-align:center">系统平台</th>
+<th style="text-align:center">分布式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>caffe</td>
+<td style="text-align:center">C++</td>
+<td style="text-align:center">Python/Matlab</td>
+<td style="text-align:center">CPU/GPU</td>
+<td style="text-align:center">linux/osx/windows</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>torch</td>
+<td style="text-align:center">Lua</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">CPU/GPU/FPGA</td>
+<td style="text-align:center">linux/osx/windows</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>theano</td>
+<td style="text-align:center">Python</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">CPU/GPU</td>
+<td style="text-align:center">linux/osx/windows</td>
+<td style="text-align:center">No</td>
+</tr>
+<tr>
+<td>tensorflow</td>
+<td style="text-align:center">C++</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">CPU/GPU/mobile</td>
+<td style="text-align:center">linux/osx</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>mxnet</td>
+<td style="text-align:center">C++</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">CPU/GPU/mobile</td>
+<td style="text-align:center">linux/osx/windows</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>cntk</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">Python/BrainScript</td>
+<td style="text-align:center">CPU/GPU</td>
+<td style="text-align:center">linux/windows</td>
+<td style="text-align:center">Yes</td>
+</tr>
+<tr>
+<td>Paddle</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">Pytho</td>
+<td style="text-align:center">CPU/GPU</td>
+<td style="text-align:center">linux</td>
+<td style="text-align:center">Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="拓展库"><a href="#拓展库" class="headerlink" title="拓展库"></a>拓展库</h3><ul>
+<li><a href="http://tensorlayer.readthedocs.io/" target="_blank" rel="external">tensorlayer</a>，tensorflow的包装库，包括9个CV示例，5个NLP示例和1个强化学习.</li>
+<li><a href="https://keras.io/" target="_blank" rel="external">Keras</a>，同时支持thenao和tensorflow. CV示例21个，NLP示例15个，强化学习示例4个.</li>
+</ul>
+<p>拓展库能够大大精简代码，强烈推荐. </p>
+<p>例如以下两段MNIST代码，同样构建一个三层MLP网络使用拓展库的代码更加精简清晰.</p>
+<p>Tensorflow MNIST MLP代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""Each layer must be written by yourself"""</span></div><div class="line"><span class="keyword">import</span> math</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="comment"># Input Layer</span></div><div class="line">inputs = tf.placeholder(tf.float32, [<span class="keyword">None</span>, <span class="number">784</span>])</div><div class="line"><span class="comment"># Hidden 1 Layer, RELU activation function</span></div><div class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">'hidden1'</span>):</div><div class="line">    weights = tf.Variable(</div><div class="line">    tf.truncated_normal([IMAGE_PIXELS, hidden1_units],</div><div class="line">                        stddev=<span class="number">1.0</span> / math.sqrt(float(IMAGE_PIXELS))),</div><div class="line">    name=<span class="string">'weights'</span>)</div><div class="line">    biases = tf.Variable(tf.zeros([hidden1_units]),</div><div class="line">                     name=<span class="string">'biases'</span>)</div><div class="line">    hidden1 = tf.nn.relu(tf.matmul(inputs, weights) + biases)</div><div class="line"><span class="comment"># Output Layer, softmax activation functoin</span></div><div class="line"><span class="keyword">with</span> tf.name_scope(<span class="string">'softmax_linear'</span>):</div><div class="line">    weights = tf.Variable(</div><div class="line">    tf.truncated_normal([hidden1_units, NUM_CLASSES],</div><div class="line">                        stddev=<span class="number">1.0</span> / math.sqrt(float(hidden1_units))),</div><div class="line">    name=<span class="string">'weights'</span>)</div><div class="line">    biases = tf.Variable(tf.zeros([NUM_CLASSES]),</div><div class="line">                     name=<span class="string">'biases'</span>)</div><div class="line">    logits = tf.matmul(hidden1, weights) + biases</div></pre></td></tr></table></figure>
+<p>Keras MNIST MLP代码<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""layers can be written by one line with the bunch of wrapper Class."""</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Input, Dense</div><div class="line"><span class="comment"># Input Layer</span></div><div class="line">inputs = Input(shape=(<span class="number">784</span>,))</div><div class="line"><span class="comment"># Hidden 1 Layer</span></div><div class="line">hidden1_out = Dense(hidden1_units, activation=<span class="string">'relu'</span>, name=<span class="string">'hidden1'</span>)(inputs)</div><div class="line"><span class="comment"># Output Layer</span></div><div class="line">output = Dense(NUM_CLASSES, activation=<span class="string">'softmax'</span>, name=<span class="string">'output'</span>)(hidden1_out)</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>熟练掌握Tensorflow，自己写Wrapper才是王道!!!</p>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-03-17</span><i class="fa fa-tag"></i><a href="/tags/DL/" title="DL" class="tag">DL </a><a href="/tags/深度学习/" title="深度学习" class="tag">深度学习 </a></div></div></div></div><div class="share"><div class="evernote"><a href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank" class="fa fa-bookmark"></a></div><div class="weibo"><a href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));" class="fa fa-weibo"></a></div><div class="twitter"><a href="http://twitter.com/home?status=,http://yoursite.com/child/2017/03/17/深度学习开源工具简介/,Heng Ding (丁恒),深度学习开源工具简介,;" class="fa fa-twitter"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a role="navigation" href="/2017/08/16/卷积神经网络玩转光伏识别/" title="卷积神经网络玩转光伏识别" class="btn">上一篇</a></li><li class="next pagbuttons"><a role="navigation" href="/2017/02/10/问句分类研究调查/" title="问句分类(Question Classification)概述" class="btn">下一篇</a></li></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
